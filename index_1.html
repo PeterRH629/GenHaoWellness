@@ -1,0 +1,507 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GenHao Wellness &mdash; Personal Training &amp; Wellness Coaching, West Seattle</title>
+<meta name="description" content="GenHao Wellness is a kinesiology-based personal training studio in West Seattle, WA, specializing in post-injury recovery and body composition coaching.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700;800&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FBF7F2;
+    --bg-alt: #F3EAE0;
+    --ink: #26190F;
+    --ink-soft: #6b5c4c;
+    --accent: #C96A3B;
+    --accent-dark: #A6522A;
+    --line: #E6D9C8;
+    --white: #FFFFFF;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: 'Work Sans', system-ui, -apple-system, sans-serif; }
+  h1, h2, h3 { font-family: 'Bricolage Grotesque', system-ui, sans-serif; margin: 0; }
+  p { margin: 0; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { color: var(--accent-dark); }
+  img { max-width: 100%; }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 48px; }
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    padding: 14px 28px; border-radius: 999px; font-weight: 600; font-size: 15px;
+    white-space: nowrap; cursor: pointer; border: 1px solid transparent;
+  }
+  .btn-accent { background: var(--accent); color: var(--white); }
+  .btn-accent:hover { background: var(--accent-dark); color: var(--white); }
+  .btn-outline { background: transparent; color: var(--white); border-color: rgba(255,255,255,0.4); }
+  .btn-outline:hover { border-color: #fff; color: #fff; }
+  .eyebrow {
+    display: inline-block; font-size: 12.5px; font-weight: 600; letter-spacing: 0.09em;
+    text-transform: uppercase; color: var(--accent); margin-bottom: 16px;
+  }
+  .lang-switch { display: flex; gap: 4px; background: var(--bg-alt); border-radius: 999px; padding: 4px; }
+  .lang-btn {
+    border: none; background: transparent; font-family: 'Work Sans', sans-serif; font-size: 13px;
+    font-weight: 600; padding: 7px 13px; border-radius: 999px; cursor: pointer; color: var(--ink-soft);
+  }
+  .lang-btn.active { background: var(--ink); color: var(--white); }
+  table { border-collapse: collapse; width: 100%; }
+  .card { background: var(--white); border: 1px solid var(--line); border-radius: 20px; padding: 36px; }
+  .table-wrap { background: var(--white); border-radius: 16px; overflow: hidden; border: 1px solid var(--line); margin-bottom: 40px; }
+  th { text-align: right; padding: 14px 20px; color: var(--white); font-size: 12.5px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; }
+  th:first-child { text-align: left; }
+  td { padding: 16px 20px; text-align: right; border-top: 1px solid var(--line); }
+  td:first-child { text-align: left; font-weight: 600; font-size: 15px; }
+  .price-total { font-weight: 600; font-size: 15px; }
+  .price-per { font-size: 12.5px; color: var(--ink-soft); margin-top: 2px; }
+  @media (max-width: 760px) {
+    .wrap { padding: 0 22px; }
+    .hero-grid { grid-template-columns: 1fr !important; }
+    .hero-visual { display: none !important; }
+    .about-body { font-size: 17px !important; }
+    .services-grid { grid-template-columns: 1fr !important; }
+    .location-grid { grid-template-columns: 1fr !important; }
+    .single-grid { grid-template-columns: 1fr !important; }
+    .nav-links { display: none !important; }
+    .hero-headline { font-size: 40px !important; }
+    .section-pad { padding-top: 56px !important; padding-bottom: 56px !important; }
+    .table-wrap { overflow-x: auto; }
+    .table-wrap table { min-width: 560px; }
+  }
+</style>
+</head>
+<body>
+<div id="app"></div>
+
+<script>
+const LOGO_SRC = "data:image/png;base64,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";
+const BOOK_URL = "https://square.site/book/LKDXA5DTE8VQW/genhao-wellness-llc-seattle-wa";
+const ACCENT_HEX = "#C96A3B";
+
+const PACKAGE_DATA = [
+  { n: 10,  ind55: 880,  ind55Per: 88,     ind45: 780,  ind45Per: 78,   partner: 1100, partnerPer: 110 },
+  { n: 20,  ind55: 1720, ind55Per: 86,     ind45: 1520, ind45Per: 76,   partner: 2150, partnerPer: 107.5 },
+  { n: 50,  ind55: 4150, ind55Per: 83,     ind45: 3650, ind45Per: 73,   partner: 5187, partnerPer: 103.74 },
+  { n: 75,  ind55: 6000, ind55Per: 80,     ind45: 5250, ind45Per: 70,   partner: 7500, partnerPer: 100 },
+  { n: 100, ind55: 7800, ind55Per: 78,     ind45: 6800, ind45Per: 68,   partner: 9750, partnerPer: 97.5 },
+];
+
+const MONTHLY_DATA = [
+  { freqKey: '1x', ind55: 385,  ind45: 342, partner: 482 },
+  { freqKey: '2x', ind55: 716,  ind45: 649, partner: 895 },
+  { freqKey: '3x', ind55: 1023, ind45: 900, partner: 1276 },
+];
+
+const HOURS_RAW = [
+  { key: 0, hours: null },
+  { key: 1, hours: "13:00–20:00" },
+  { key: 2, hours: "13:00–20:00" },
+  { key: 3, hours: "13:00–20:00" },
+  { key: 4, hours: "13:00–20:00" },
+  { key: 5, hours: "13:00–20:00" },
+  { key: 6, hours: "MSG" }
+];
+
+function fmtMoney(n) {
+  const rounded = Math.round(n * 100) / 100;
+  const isInt = Number.isInteger(rounded);
+  return '$' + rounded.toLocaleString('en-US', isInt ? {} : { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+}
+
+function esc(s) {
+  return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+const COPY = {
+  en: {
+    nav: { about: "About", services: "Services", pricing: "Pricing", location: "Location", book: "Book Now" },
+    hero: {
+      eyebrow: "West Seattle · Personal Training",
+      headline: "Train smarter.\nRecover stronger.",
+      sub: "One-on-one and partner coaching built on a kinesiology background — focused on post-injury recovery, long-term body composition change, and improved athletic performance.",
+      cta: "Book a Session",
+      note: "Studio at ActivSpace, West Seattle"
+    },
+    about: {
+      eyebrow: "Why GenHao Wellness",
+      heading: "Trained to understand how you move",
+      body: "GenHao Wellness is a kinesiology-based personal training studio built around three goals: helping clients return safely from injury, easing chronic pain, and changing their body composition for good. Every program starts with an assessment of how you move — not just how you look."
+    },
+    services: {
+      heading: "Services",
+      individual: { title: "Individual Training", desc: "One-on-one sessions built around your movement history, current limitations, and goals.", note: "55 or 45 minutes" },
+      partner: { title: "Partner Training", desc: "Train alongside a friend, partner, or family member — the same personalized coaching, shared.", note: "55-minute sessions" }
+    },
+    pricing: {
+      heading: "Pricing",
+      sub: "Choose single sessions, bundled packages, or a recurring monthly plan.",
+      packagesHeading: "Session Packages",
+      packagesCols: { sessions: "Sessions", ind55: "Individual · 55 min", ind45: "Individual · 45 min", partner: "Partner · 55 min" },
+      monthlyHeading: "Monthly Plans",
+      monthlyCols: { freq: "Frequency", ind55: "55 min", ind45: "45 min", partner: "Partner · 55 min" },
+      singleHeading: "Single Sessions",
+      singleItems: [
+        { label: "Individual · 55 min", price: "$95" },
+        { label: "Individual · 45 min", price: "$85" },
+        { label: "Partner · 55 min (per pair)", price: "$110" }
+      ],
+      perSessionSuffix: " / session",
+      monthSuffix: " / month",
+      freqLabels: { '1x': "1× / week", '2x': "2× / week", '3x': "3× / week" },
+      note: "Purchased sessions do not expire. A 2.5% service fee applies to card payments."
+    },
+    location: {
+      heading: "Visit the Studio",
+      addressLabel: "Address",
+      hoursLabel: "Hours",
+      phoneLabel: "Phone",
+      emailLabel: "Email",
+      neighborhood: "ActivSpace · West Seattle",
+      closedLabel: "Closed",
+      messageLabel: "Message to inquire",
+      days: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+    },
+    cta: { heading: "Ready to start?", sub: "Book your first session online in a couple of minutes.", button: "Book a Session" },
+    footer: { rights: "© 2026 GenHao Wellness LLC" }
+  },
+  zh: {
+    nav: { about: "關於", services: "服務", pricing: "價格", location: "地點", book: "立即預約" },
+    hero: {
+      eyebrow: "西雅圖西區·一對一教練",
+      headline: "練得聪明，\n恢復得更強壯。",
+      sub: "以運動科學為基礎的一對一與雙人教練課程，擅長傷後復原、長期體態改變，以及提升運動表現。",
+      cta: "立即預約",
+      note: "工作室位於西雅圖 West Seattle 的 ActivSpace"
+    },
+    about: {
+      eyebrow: "為什麼選擇 GenHao Wellness",
+      heading: "從你的身體如何動開始",
+      body: "GenHao Wellness 是一家以運動科學為基礎的個人教練工作室，圍繞三個目標打造：協助學員安全地從傷後復原、改善長期疼痛困擾，並長期改變他們的體態組成。每一套訓練計畫都從評估你的動作模式開始，而不只是外表。"
+    },
+    services: {
+      heading: "服務項目",
+      individual: { title: "個人課程", desc: "依照你的動作病史、目前限制與目標，量身打造的一對一課程。", note: "55或45分鐘" },
+      partner: { title: "雙人課程", desc: "與朋友、伴侶或家人一起訓練——同樣專屬的指導，共享一堂課。", note: "55分鐘課程" }
+    },
+    pricing: {
+      heading: "價格",
+      sub: "可選擇單堂課、多堂課程包，或每月固定方案。",
+      packagesHeading: "課程包",
+      packagesCols: { sessions: "堂數", ind55: "個人·55分鐘", ind45: "個人·45分鐘", partner: "雙人·55分鐘" },
+      monthlyHeading: "月方案",
+      monthlyCols: { freq: "頻率", ind55: "55分鐘", ind45: "45分鐘", partner: "雙人·55分鐘" },
+      singleHeading: "單堂課程",
+      singleItems: [
+        { label: "個人課程·55分鐘", price: "$95" },
+        { label: "個人課程·45分鐘", price: "$85" },
+        { label: "雙人課程·55分鐘（每對）", price: "$110" }
+      ],
+      perSessionSuffix: " / 堂",
+      monthSuffix: " / 月",
+      freqLabels: { '1x': "每週 1 次", '2x': "每週 2 次", '3x': "每週 3 次" },
+      note: "已購買的堂數沒有使用期限。信用卡付款需加收 2.5% 服務費。"
+    },
+    location: {
+      heading: "工作室資訊",
+      addressLabel: "地址",
+      hoursLabel: "營業時間",
+      phoneLabel: "電話",
+      emailLabel: "電子郵件",
+      neighborhood: "ActivSpace·西雅圖西區",
+      closedLabel: "休息",
+      messageLabel: "請訊息詢問",
+      days: ["週日", "週一", "週二", "週三", "週四", "週五", "週六"]
+    },
+    cta: { heading: "準備好開始了嗎？", sub: "線上幾分鐘即可預約你的第一堂課。", button: "立即預約" },
+    footer: { rights: "© 2026 GenHao Wellness LLC" }
+  },
+  es: {
+    nav: { about: "Nosotros", services: "Servicios", pricing: "Precios", location: "Ubicación", book: "Reservar" },
+    hero: {
+      eyebrow: "West Seattle · Entrenamiento personal",
+      headline: "Entrena más inteligente.\nRecupérate más fuerte.",
+      sub: "Coaching individual y en pareja basado en kinesiología, enfocado en la recuperación de lesiones, el cambio de composición corporal a largo plazo y la mejora del rendimiento físico.",
+      cta: "Reservar sesión",
+      note: "Estudio en ActivSpace, West Seattle"
+    },
+    about: {
+      eyebrow: "Por qué GenHao Wellness",
+      heading: "Formado para entender cómo te mueves",
+      body: "GenHao Wellness es un estudio de entrenamiento personal basado en kinesiología, creado en torno a tres objetivos: ayudarte a recuperarte de una lesión de forma segura, aliviar el dolor crónico y transformar tu composición corporal de manera duradera. Cada programa comienza evaluando cómo te mueves, no solo cómo te ves."
+    },
+    services: {
+      heading: "Servicios",
+      individual: { title: "Entrenamiento individual", desc: "Sesiones personalizadas según tu historial de movimiento, limitaciones actuales y objetivos.", note: "55 o 45 minutos" },
+      partner: { title: "Entrenamiento en pareja", desc: "Entrena junto a un amigo, pareja o familiar — el mismo coaching personalizado, compartido.", note: "Sesiones de 55 minutos" }
+    },
+    pricing: {
+      heading: "Precios",
+      sub: "Elige sesiones sueltas, paquetes de sesiones o un plan mensual recurrente.",
+      packagesHeading: "Paquetes de sesiones",
+      packagesCols: { sessions: "Sesiones", ind55: "Individual · 55 min", ind45: "Individual · 45 min", partner: "Pareja · 55 min" },
+      monthlyHeading: "Planes mensuales",
+      monthlyCols: { freq: "Frecuencia", ind55: "55 min", ind45: "45 min", partner: "Pareja · 55 min" },
+      singleHeading: "Sesiones sueltas",
+      singleItems: [
+        { label: "Individual · 55 min", price: "$95" },
+        { label: "Individual · 45 min", price: "$85" },
+        { label: "Pareja · 55 min (por pareja)", price: "$110" }
+      ],
+      perSessionSuffix: " / sesión",
+      monthSuffix: " / mes",
+      freqLabels: { '1x': "1× / semana", '2x': "2× / semana", '3x': "3× / semana" },
+      note: "Las sesiones compradas no caducan. Se aplica un cargo por servicio del 2.5% a los pagos con tarjeta."
+    },
+    location: {
+      heading: "Visita el estudio",
+      addressLabel: "Dirección",
+      hoursLabel: "Horario",
+      phoneLabel: "Teléfono",
+      emailLabel: "Correo",
+      neighborhood: "ActivSpace · West Seattle",
+      closedLabel: "Cerrado",
+      messageLabel: "Escríbenos para consultar",
+      days: ["Dom", "Lun", "Mar", "Mié", "Jue", "Vie", "Sáb"]
+    },
+    cta: { heading: "¿Listo para empezar?", sub: "Reserva tu primera sesión en línea en un par de minutos.", button: "Reservar sesión" },
+    footer: { rights: "© 2026 GenHao Wellness LLC" }
+  }
+};
+
+let currentLang = 'en';
+
+function svgIcon(path, size) {
+  return path;
+}
+
+function render() {
+  const T = COPY[currentLang];
+
+  const packageRowsHtml = PACKAGE_DATA.map(row => `
+    <tr>
+      <td>${row.n}</td>
+      <td><div class="price-total">${fmtMoney(row.ind55)}</div><div class="price-per">${fmtMoney(row.ind55Per)}${T.pricing.perSessionSuffix}</div></td>
+      <td><div class="price-total">${fmtMoney(row.ind45)}</div><div class="price-per">${fmtMoney(row.ind45Per)}${T.pricing.perSessionSuffix}</div></td>
+      <td><div class="price-total">${fmtMoney(row.partner)}</div><div class="price-per">${fmtMoney(row.partnerPer)}${T.pricing.perSessionSuffix}</div></td>
+    </tr>
+  `).join('');
+
+  const monthlyRowsHtml = MONTHLY_DATA.map(row => `
+    <tr>
+      <td>${T.pricing.freqLabels[row.freqKey]}</td>
+      <td class="price-total">${fmtMoney(row.ind55)}${T.pricing.monthSuffix}</td>
+      <td class="price-total">${fmtMoney(row.ind45)}${T.pricing.monthSuffix}</td>
+      <td class="price-total">${fmtMoney(row.partner)}${T.pricing.monthSuffix}</td>
+    </tr>
+  `).join('');
+
+  const singleCardsHtml = T.pricing.singleItems.map(item => `
+    <div class="card" style="padding:22px; display:flex; flex-direction:column; gap:8px;">
+      <span style="font-size:14px; color:var(--ink-soft); font-weight:500;">${esc(item.label)}</span>
+      <span style="font-size:24px; font-weight:700;">${esc(item.price)}</span>
+    </div>
+  `).join('');
+
+  const hoursRowsHtml = HOURS_RAW.map(h => `
+    <div style="display:flex; justify-content:space-between; padding:9px 0; border-top:1px solid var(--line); font-size:15px;">
+      <span style="color:var(--ink-soft);">${esc(T.location.days[h.key])}</span>
+      <span style="font-weight:600;">${h.hours === 'MSG' ? esc(T.location.messageLabel) : (h.hours ? esc(h.hours) : esc(T.location.closedLabel))}</span>
+    </div>
+  `).join('');
+
+  const langBtn = (code, label) => `<button class="lang-btn ${currentLang === code ? 'active' : ''}" data-lang="${code}">${label}</button>`;
+
+  document.getElementById('app').innerHTML = `
+  <header style="position:sticky; top:0; z-index:50; background:rgba(251,247,242,0.92); backdrop-filter:blur(6px); border-bottom:1px solid var(--line);">
+    <div class="wrap" style="display:flex; align-items:center; justify-content:space-between; gap:24px; padding-top:16px; padding-bottom:16px;">
+      <a href="#top" style="display:flex; align-items:center; gap:12px; color:var(--ink);">
+        <img src="${LOGO_SRC}" alt="GenHao Wellness" style="height:34px; width:auto; display:block;">
+        <span style="font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:18px; letter-spacing:-0.01em;">GenHao Wellness</span>
+      </a>
+      <nav class="nav-links" style="display:flex; align-items:center; gap:32px;">
+        <a href="#about" style="color:var(--ink-soft); font-weight:500; font-size:14.5px;">${esc(T.nav.about)}</a>
+        <a href="#services" style="color:var(--ink-soft); font-weight:500; font-size:14.5px;">${esc(T.nav.services)}</a>
+        <a href="#pricing" style="color:var(--ink-soft); font-weight:500; font-size:14.5px;">${esc(T.nav.pricing)}</a>
+        <a href="#location" style="color:var(--ink-soft); font-weight:500; font-size:14.5px;">${esc(T.nav.location)}</a>
+      </nav>
+      <div style="display:flex; align-items:center; gap:14px;">
+        <div class="lang-switch">
+          ${langBtn('en', 'EN')}${langBtn('zh', '中')}${langBtn('es', 'ES')}
+        </div>
+        <a class="btn btn-accent" href="${BOOK_URL}" target="_blank" rel="noopener" style="padding:10px 20px; font-size:14px;">${esc(T.nav.book)}</a>
+      </div>
+    </div>
+  </header>
+
+  <section id="top" style="padding-top:88px; padding-bottom:80px;">
+    <div class="wrap hero-grid" style="display:grid; grid-template-columns:1.15fr 0.85fr; gap:56px; align-items:center;">
+      <div>
+        <span class="eyebrow">${esc(T.hero.eyebrow)}</span>
+        <h1 class="hero-headline" style="font-size:58px; line-height:1.06; font-weight:700; letter-spacing:-0.02em; white-space:pre-line;">${esc(T.hero.headline)}</h1>
+        <p style="margin-top:24px; font-size:18px; line-height:1.6; color:var(--ink-soft); max-width:480px;">${esc(T.hero.sub)}</p>
+        <div style="margin-top:36px; display:flex; align-items:center; gap:20px; flex-wrap:wrap;">
+          <a class="btn btn-accent" href="${BOOK_URL}" target="_blank" rel="noopener">${esc(T.hero.cta)}</a>
+          <span style="font-size:14px; color:var(--ink-soft);">${esc(T.hero.note)}</span>
+        </div>
+      </div>
+      <div class="hero-visual" style="position:relative; display:flex; align-items:center; justify-content:center;">
+        <div style="position:absolute; width:380px; height:380px; border-radius:50%; background:radial-gradient(circle at 35% 30%, #E9C7AE 0%, var(--bg-alt) 70%);"></div>
+        <div style="position:absolute; width:340px; height:340px; border-radius:50%; border:1px solid var(--line);"></div>
+        <div style="position:relative; background:var(--white); border-radius:28px; padding:40px 44px; box-shadow:0 30px 60px -20px rgba(38,25,15,0.18); border:1px solid var(--line);">
+          <img src="${LOGO_SRC}" alt="GenHao Wellness logo" style="width:190px; height:auto; display:block;">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="section-pad" style="padding-top:72px; padding-bottom:72px; background:var(--bg-alt); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+    <div class="wrap" style="max-width:720px; text-align:center; margin:0 auto;">
+      <span class="eyebrow">${esc(T.about.eyebrow)}</span>
+      <h2 style="font-size:34px; font-weight:700; letter-spacing:-0.01em; line-height:1.2;">${esc(T.about.heading)}</h2>
+      <p class="about-body" style="margin-top:20px; font-size:18px; line-height:1.7; color:var(--ink-soft);">${esc(T.about.body)}</p>
+    </div>
+  </section>
+
+  <section id="services" class="section-pad" style="padding-top:88px; padding-bottom:88px;">
+    <div class="wrap">
+      <h2 style="font-size:32px; font-weight:700; text-align:center; margin-bottom:44px;">${esc(T.services.heading)}</h2>
+      <div class="services-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:28px;">
+        <div class="card">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="${ACCENT_HEX}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6.5 6.5 L17.5 17.5"></path><path d="M5 8 L2 5 M16 19 L19 22"></path>
+            <rect x="3.6" y="3.6" width="5" height="5" rx="1.4" transform="rotate(45 6.1 6.1)"></rect>
+            <rect x="15.4" y="15.4" width="5" height="5" rx="1.4" transform="rotate(45 17.9 17.9)"></rect>
+          </svg>
+          <h3 style="margin-top:20px; font-size:21px; font-weight:700;">${esc(T.services.individual.title)}</h3>
+          <p style="margin-top:12px; font-size:15.5px; line-height:1.65; color:var(--ink-soft);">${esc(T.services.individual.desc)}</p>
+          <p style="margin-top:16px; font-size:13.5px; font-weight:600; color:var(--accent); letter-spacing:0.02em;">${esc(T.services.individual.note)}</p>
+        </div>
+        <div class="card">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="${ACCENT_HEX}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="8" cy="6.5" r="2.6"></circle><circle cx="17" cy="7.5" r="2.2"></circle>
+            <path d="M2.5 20 C2.5 15.6 4.9 13 8 13 C10.6 13 12.7 14.7 13.4 17.2"></path>
+            <path d="M13 20 C13 16.4 14.8 14 17.3 14 C19.6 14 21.5 15.9 21.5 19.2"></path>
+          </svg>
+          <h3 style="margin-top:20px; font-size:21px; font-weight:700;">${esc(T.services.partner.title)}</h3>
+          <p style="margin-top:12px; font-size:15.5px; line-height:1.65; color:var(--ink-soft);">${esc(T.services.partner.desc)}</p>
+          <p style="margin-top:16px; font-size:13.5px; font-weight:600; color:var(--accent); letter-spacing:0.02em;">${esc(T.services.partner.note)}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="pricing" class="section-pad" style="padding-top:88px; padding-bottom:96px; background:var(--bg-alt); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+    <div class="wrap">
+      <div style="text-align:center; max-width:620px; margin:0 auto 48px;">
+        <h2 style="font-size:32px; font-weight:700;">${esc(T.pricing.heading)}</h2>
+        <p style="margin-top:14px; font-size:16px; color:var(--ink-soft);">${esc(T.pricing.sub)}</p>
+      </div>
+
+      <h3 style="font-size:18px; font-weight:700; margin-bottom:14px;">${esc(T.pricing.packagesHeading)}</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr style="background:var(--ink);">
+            <th>${esc(T.pricing.packagesCols.sessions)}</th>
+            <th>${esc(T.pricing.packagesCols.ind55)}</th>
+            <th>${esc(T.pricing.packagesCols.ind45)}</th>
+            <th>${esc(T.pricing.packagesCols.partner)}</th>
+          </tr></thead>
+          <tbody>${packageRowsHtml}</tbody>
+        </table>
+      </div>
+
+      <h3 style="font-size:18px; font-weight:700; margin-bottom:14px;">${esc(T.pricing.monthlyHeading)}</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr style="background:var(--ink);">
+            <th>${esc(T.pricing.monthlyCols.freq)}</th>
+            <th>${esc(T.pricing.monthlyCols.ind55)}</th>
+            <th>${esc(T.pricing.monthlyCols.ind45)}</th>
+            <th>${esc(T.pricing.monthlyCols.partner)}</th>
+          </tr></thead>
+          <tbody>${monthlyRowsHtml}</tbody>
+        </table>
+      </div>
+
+      <h3 style="font-size:18px; font-weight:700; margin-bottom:14px;">${esc(T.pricing.singleHeading)}</h3>
+      <div class="single-grid" style="display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:16px; margin-bottom:28px;">
+        ${singleCardsHtml}
+      </div>
+
+      <p style="font-size:13px; color:var(--ink-soft); line-height:1.6;">${esc(T.pricing.note)}</p>
+    </div>
+  </section>
+
+  <section id="location" class="section-pad" style="padding-top:88px; padding-bottom:88px;">
+    <div class="wrap">
+      <h2 style="font-size:32px; font-weight:700; text-align:center; margin-bottom:44px;">${esc(T.location.heading)}</h2>
+      <div class="location-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:28px; align-items:stretch;">
+        <div class="card" style="display:flex; flex-direction:column; gap:22px;">
+          <div>
+            <div style="display:flex; align-items:center; gap:10px; margin-bottom:8px;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="${ACCENT_HEX}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21Z"></path><circle cx="12" cy="9.5" r="2.4"></circle></svg>
+              <span style="font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; color:var(--ink-soft);">${esc(T.location.addressLabel)}</span>
+            </div>
+            <p style="font-size:16px; line-height:1.6;">3400 Harbor Ave SW<br>Seattle, WA 98126</p>
+            <p style="font-size:13.5px; color:var(--ink-soft); margin-top:6px;">${esc(T.location.neighborhood)}</p>
+          </div>
+          <div style="border-top:1px solid var(--line); padding-top:20px;">
+            <div style="display:flex; align-items:center; gap:10px; margin-bottom:8px;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="${ACCENT_HEX}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5c0-.6.4-1 1-1h3.2c.5 0 .9.3 1 .8l1 3.6c.1.4 0 .9-.4 1.2L7.6 11c1.1 2.4 3 4.3 5.4 5.4l1.4-2.2c.3-.4.8-.5 1.2-.4l3.6 1c.5.1.8.5.8 1V19c0 .6-.4 1-1 1h-1C9.6 20 4 14.4 4 7V5Z"></path></svg>
+              <span style="font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; color:var(--ink-soft);">${esc(T.location.phoneLabel)}</span>
+            </div>
+            <a href="tel:+14258663332" style="font-size:16px; color:var(--ink);">(425) 866-3332</a>
+          </div>
+          <div>
+            <div style="display:flex; align-items:center; gap:10px; margin-bottom:8px;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="${ACCENT_HEX}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m4 7 8 6 8-6"></path></svg>
+              <span style="font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; color:var(--ink-soft);">${esc(T.location.emailLabel)}</span>
+            </div>
+            <a href="mailto:genhaowellness@gmail.com" style="font-size:16px; color:var(--ink); word-break:break-word;">genhaowellness@gmail.com</a>
+          </div>
+        </div>
+        <div class="card">
+          <div style="display:flex; align-items:center; gap:10px; margin-bottom:18px;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="${ACCENT_HEX}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3.2 2"></path></svg>
+            <span style="font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; color:var(--ink-soft);">${esc(T.location.hoursLabel)}</span>
+          </div>
+          <div style="display:flex; flex-direction:column;">${hoursRowsHtml}</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding:84px 0; background:var(--ink); text-align:center;">
+    <div class="wrap">
+      <h2 style="color:var(--white); font-size:32px; font-weight:700;">${esc(T.cta.heading)}</h2>
+      <p style="color:rgba(255,255,255,0.65); font-size:16px; margin-top:14px;">${esc(T.cta.sub)}</p>
+      <div style="margin-top:30px; display:flex; align-items:center; justify-content:center; gap:16px; flex-wrap:wrap;">
+        <a class="btn btn-accent" href="${BOOK_URL}" target="_blank" rel="noopener">${esc(T.cta.button)}</a>
+        <a class="btn btn-outline" href="tel:+14258663332">(425) 866-3332</a>
+      </div>
+    </div>
+  </section>
+
+  <footer style="padding:26px 0; background:var(--bg);">
+    <div class="wrap" style="display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;">
+      <span style="font-size:13px; color:var(--ink-soft);">${esc(T.footer.rights)}</span>
+      <span style="font-size:13px; color:var(--ink-soft);">3400 Harbor Ave SW, Seattle, WA 98126</span>
+    </div>
+  </footer>
+  `;
+
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      currentLang = btn.getAttribute('data-lang');
+      document.documentElement.lang = currentLang === 'zh' ? 'zh-Hant' : currentLang;
+      render();
+    });
+  });
+}
+
+render();
+</script>
+</body>
+</html>
