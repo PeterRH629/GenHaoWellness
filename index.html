@@ -63,6 +63,8 @@
     .about-body { font-size: 17px !important; }
     .services-grid { grid-template-columns: 1fr !important; }
     .location-grid { grid-template-columns: 1fr !important; }
+    .trainer-grid { grid-template-columns: 1fr !important; }
+    .trainer-photo { max-width: 280px !important; margin: 0 auto; }
     .single-grid { grid-template-columns: 1fr !important; }
     .nav-links { display: none !important; }
     .hero-headline { font-size: 40px !important; }
@@ -129,6 +131,12 @@ const COPY = {
       heading: "Trained to understand how you move",
       body: "GenHao Wellness is a kinesiology-based personal training studio built around three goals: helping clients return safely from injury, easing chronic pain, and changing their body composition for good. Every program starts with an assessment of how you move — not just how you look."
     },
+    trainer: {
+      eyebrow: "Meet Your Trainer",
+      name: "Hsi Yen Wang",
+      credentials: "Founder & Trainer · Kinesiology · IASTM Certified",
+      bio: "Hi, I'm Hsi Yen Wang — the trainer and founder behind GenHao Wellness. My background is in kinesiology, and I hold an international IASTM (Instrument-Assisted Soft Tissue Mobilization) certification. I started GenHao Wellness because I wanted a training space that actually understands how your body moves — not just how it looks. Whether you're returning from an injury, working through chronic pain, or changing your body composition, every program starts with an honest look at how you move."
+    },
     services: {
       heading: "Services",
       individual: { title: "Individual Training", desc: "One-on-one sessions built around your movement history, current limitations, and goals.", note: "55 or 45 minutes" },
@@ -180,6 +188,12 @@ const COPY = {
       heading: "從你的身體如何動開始",
       body: "GenHao Wellness 是一家以運動科學為基礎的個人教練工作室，圍繞三個目標打造：協助學員安全地從傷後復原、改善長期疼痛困擾，並長期改變他們的體態組成。每一套訓練計畫都從評估你的動作模式開始，而不只是外表。"
     },
+    trainer: {
+      eyebrow: "認識你的教練",
+      name: "Hsi Yen Wang",
+      credentials: "創辦人／教練．運動機能學．IASTM 國際認證",
+      bio: "你好，我是 Hsi Yen Wang，GenHao Wellness 的創辦人與教練。我擁有運動機能學（Kinesiology）背景，並持有國際 IASTM（儀器輔助軟組織鬆動術）證照。我創立 GenHao Wellness，是希望打造一個真正理解「你怎麼動」而不只是「你看起來如何」的訓練空間。無論是傷後恢復、慢性疼痛調理，或是體態改變，每個訓練計畫都從誠實的動作評估開始。"
+    },
     services: {
       heading: "服務項目",
       individual: { title: "個人課程", desc: "依照你的動作病史、目前限制與目標，量身打造的一對一課程。", note: "55或45分鐘" },
@@ -230,6 +244,12 @@ const COPY = {
       eyebrow: "Por qué GenHao Wellness",
       heading: "Formado para entender cómo te mueves",
       body: "GenHao Wellness es un estudio de entrenamiento personal basado en kinesiología, creado en torno a tres objetivos: ayudarte a recuperarte de una lesión de forma segura, aliviar el dolor crónico y transformar tu composición corporal de manera duradera. Cada programa comienza evaluando cómo te mueves, no solo cómo te ves."
+    },
+    trainer: {
+      eyebrow: "Conoce a tu entrenador",
+      name: "Hsi Yen Wang",
+      credentials: "Fundador y entrenador · Kinesiología · Certificación IASTM",
+      bio: "Hola, soy Hsi Yen Wang, el entrenador y fundador de GenHao Wellness. Mi formación es en kinesiología y cuento con la certificación internacional IASTM (Movilización de Tejidos Blandos Asistida por Instrumentos). Fundé GenHao Wellness porque quería crear un espacio de entrenamiento que realmente entienda cómo se mueve tu cuerpo, no solo cómo se ve. Ya sea que te estés recuperando de una lesión, trabajando con dolor crónico o cambiando tu composición corporal, cada programa comienza con una evaluación honesta de tu movimiento."
     },
     services: {
       heading: "Servicios",
@@ -361,6 +381,20 @@ function render() {
       <span class="eyebrow">${esc(T.about.eyebrow)}</span>
       <h2 style="font-size:34px; font-weight:700; letter-spacing:-0.01em; line-height:1.2;">${esc(T.about.heading)}</h2>
       <p class="about-body" style="margin-top:20px; font-size:18px; line-height:1.7; color:var(--ink-soft);">${esc(T.about.body)}</p>
+    </div>
+  </section>
+
+  <section id="trainer" class="section-pad" style="padding-top:88px; padding-bottom:88px;">
+    <div class="wrap">
+      <div class="trainer-grid" style="display:grid; grid-template-columns:0.85fr 1.15fr; gap:56px; align-items:center;">
+        <img class="trainer-photo" src="trainer-hsiyen.jpg" alt="${esc(T.trainer.name)}" style="width:100%; border-radius:20px; display:block; object-fit:cover; box-shadow:0 20px 40px -20px rgba(38,25,15,0.35);">
+        <div>
+          <span class="eyebrow">${esc(T.trainer.eyebrow)}</span>
+          <h2 style="font-size:32px; font-weight:700; letter-spacing:-0.01em; line-height:1.2;">${esc(T.trainer.name)}</h2>
+          <p style="margin-top:8px; font-size:14px; font-weight:600; letter-spacing:0.02em; color:var(--accent);">${esc(T.trainer.credentials)}</p>
+          <p style="margin-top:20px; font-size:17px; line-height:1.7; color:var(--ink-soft);">${esc(T.trainer.bio)}</p>
+        </div>
+      </div>
     </div>
   </section>
 
