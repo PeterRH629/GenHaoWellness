@@ -65,7 +65,6 @@
     .location-grid { grid-template-columns: 1fr !important; }
     .trainer-grid { grid-template-columns: 1fr !important; }
     .trainer-photo { max-width: 280px !important; margin: 0 auto; }
-    .single-grid { grid-template-columns: 1fr !important; }
     .nav-links { display: none !important; }
     .hero-headline { font-size: 40px !important; }
     .section-pad { padding-top: 56px !important; padding-bottom: 56px !important; }
@@ -144,17 +143,11 @@ const COPY = {
     },
     pricing: {
       heading: "Pricing",
-      sub: "Choose single sessions, bundled packages, or a recurring monthly plan.",
+      sub: "Choose a bundled session package or a recurring monthly plan.",
       packagesHeading: "Session Packages",
       packagesCols: { sessions: "Sessions", ind55: "Individual · 55 min", ind45: "Individual · 45 min", partner: "Partner · 55 min" },
       monthlyHeading: "Monthly Plans",
       monthlyCols: { freq: "Frequency", ind55: "55 min", ind45: "45 min", partner: "Partner · 55 min" },
-      singleHeading: "Single Sessions",
-      singleItems: [
-        { label: "Individual · 55 min", price: "$95" },
-        { label: "Individual · 45 min", price: "$85" },
-        { label: "Partner · 55 min (per pair)", price: "$110" }
-      ],
       perSessionSuffix: " / session",
       monthSuffix: " / month",
       freqLabels: { '1x': "1× / week", '2x': "2× / week", '3x': "3× / week" },
@@ -201,17 +194,11 @@ const COPY = {
     },
     pricing: {
       heading: "價格",
-      sub: "可選擇單堂課、多堂課程包，或每月固定方案。",
+      sub: "可選擇多堂課程包，或每月固定方案。",
       packagesHeading: "課程包",
       packagesCols: { sessions: "堂數", ind55: "個人·55分鐘", ind45: "個人·45分鐘", partner: "雙人·55分鐘" },
       monthlyHeading: "月方案",
       monthlyCols: { freq: "頻率", ind55: "55分鐘", ind45: "45分鐘", partner: "雙人·55分鐘" },
-      singleHeading: "單堂課程",
-      singleItems: [
-        { label: "個人課程·55分鐘", price: "$95" },
-        { label: "個人課程·45分鐘", price: "$85" },
-        { label: "雙人課程·55分鐘（每對）", price: "$110" }
-      ],
       perSessionSuffix: " / 堂",
       monthSuffix: " / 月",
       freqLabels: { '1x': "每週 1 次", '2x': "每週 2 次", '3x': "每週 3 次" },
@@ -258,17 +245,11 @@ const COPY = {
     },
     pricing: {
       heading: "Precios",
-      sub: "Elige sesiones sueltas, paquetes de sesiones o un plan mensual recurrente.",
+      sub: "Elige un paquete de sesiones o un plan mensual recurrente.",
       packagesHeading: "Paquetes de sesiones",
       packagesCols: { sessions: "Sesiones", ind55: "Individual · 55 min", ind45: "Individual · 45 min", partner: "Pareja · 55 min" },
       monthlyHeading: "Planes mensuales",
       monthlyCols: { freq: "Frecuencia", ind55: "55 min", ind45: "45 min", partner: "Pareja · 55 min" },
-      singleHeading: "Sesiones sueltas",
-      singleItems: [
-        { label: "Individual · 55 min", price: "$95" },
-        { label: "Individual · 45 min", price: "$85" },
-        { label: "Pareja · 55 min (por pareja)", price: "$110" }
-      ],
       perSessionSuffix: " / sesión",
       monthSuffix: " / mes",
       freqLabels: { '1x': "1× / semana", '2x': "2× / semana", '3x': "3× / semana" },
@@ -315,13 +296,6 @@ function render() {
       <td class="price-total">${fmtMoney(row.ind45)}${T.pricing.monthSuffix}</td>
       <td class="price-total">${fmtMoney(row.partner)}${T.pricing.monthSuffix}</td>
     </tr>
-  `).join('');
-
-  const singleCardsHtml = T.pricing.singleItems.map(item => `
-    <div class="card" style="padding:22px; display:flex; flex-direction:column; gap:8px;">
-      <span style="font-size:14px; color:var(--ink-soft); font-weight:500;">${esc(item.label)}</span>
-      <span style="font-size:24px; font-weight:700;">${esc(item.price)}</span>
-    </div>
   `).join('');
 
   const hoursRowsHtml = HOURS_RAW.map(h => `
@@ -457,11 +431,6 @@ function render() {
           </tr></thead>
           <tbody>${monthlyRowsHtml}</tbody>
         </table>
-      </div>
-
-      <h3 style="font-size:18px; font-weight:700; margin-bottom:14px;">${esc(T.pricing.singleHeading)}</h3>
-      <div class="single-grid" style="display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:16px; margin-bottom:28px;">
-        ${singleCardsHtml}
       </div>
 
       <p style="font-size:13px; color:var(--ink-soft); line-height:1.6;">${esc(T.pricing.note)}</p>
