@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Meet Your Trainer &mdash; GenHao Wellness</title>
+<meta name="description" content="Meet Hsi Yen Wang, founder and trainer at GenHao Wellness — kinesiology background, IASTM certified.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700;800&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="app"></div>
+
+<script src="common.js"></script>
+<script>
+mountPage('trainer', function (T) {
+  return `
+  <section class="section-pad" style="padding-top:88px; padding-bottom:88px;">
+    <div class="wrap">
+      <div class="trainer-grid" style="display:grid; grid-template-columns:0.85fr 1.15fr; gap:56px; align-items:center;">
+        <img class="trainer-photo" src="trainer-hsiyen.jpg" alt="${esc(T.trainer.name)}" style="width:100%; border-radius:20px; display:block; object-fit:cover; box-shadow:0 20px 40px -20px rgba(38,25,15,0.35);">
+        <div>
+          <span class="eyebrow">${esc(T.trainer.eyebrow)}</span>
+          <h1 style="font-size:32px; font-weight:700; letter-spacing:-0.01em; line-height:1.2;">${esc(T.trainer.name)}</h1>
+          <p style="margin-top:8px; font-size:14px; font-weight:600; letter-spacing:0.02em; color:var(--accent);">${esc(T.trainer.credentials)}</p>
+          <p style="margin-top:20px; font-size:17px; line-height:1.7; color:var(--ink-soft);">${esc(T.trainer.bio)}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  `;
+});
+</script>
+</body>
+</html>

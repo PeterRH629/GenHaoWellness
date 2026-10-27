@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Studio &mdash; GenHao Wellness</title>
+<meta name="description" content="Take a look at the GenHao Wellness training studio at ActivSpace in West Seattle, WA.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700;800&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="app"></div>
+
+<script src="common.js"></script>
+<script>
+mountPage('space', function (T) {
+  return `
+  <section class="section-pad" style="padding-top:88px; padding-bottom:88px;">
+    <div class="wrap" style="max-width:720px; text-align:center; margin:0 auto;">
+      <span class="eyebrow">${esc(T.space.eyebrow)}</span>
+      <h1 style="font-size:34px; font-weight:700; letter-spacing:-0.01em; line-height:1.2;">${esc(T.space.heading)}</h1>
+      <p style="margin-top:20px; font-size:18px; line-height:1.7; color:var(--ink-soft);">${esc(T.space.body)}</p>
+    </div>
+    <div class="wrap">
+      <div class="space-photo-grid">
+        <div class="space-photo-placeholder">${esc(T.space.photoNote)}</div>
+        <div class="space-photo-placeholder">${esc(T.space.photoNote)}</div>
+      </div>
+    </div>
+  </section>
+  `;
+});
+</script>
+</body>
+</html>
