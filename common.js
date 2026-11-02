@@ -52,7 +52,7 @@ const NAV_PAGES = [
 let currentLang = (function () {
   try {
     const saved = localStorage.getItem('ghw_lang');
-    if (saved === 'en' || saved === 'zh' || saved === 'es') return saved;
+    if (saved === 'en' || saved === 'zh') return saved;
   } catch (e) {}
   return 'en';
 })();
@@ -171,63 +171,6 @@ const COPY = {
     },
     cta: { heading: "準備好開始了嗎？", sub: "線上幾分鐘即可預約你的第一堂課。", button: "立即預約" },
     footer: { rights: "© 2026 GenHao Wellness LLC" }
-  },
-  es: {
-    nav: { about: "Nosotros", space: "Estudio", trainer: "Entrenador", services: "Servicios", price: "Precios", contact: "Contacto", book: "Reservar" },
-    hero: {
-      eyebrow: "West Seattle · Entrenamiento personal",
-      headline: "Entrena más inteligente.\nRecupérate más fuerte.",
-      sub: "Coaching individual y en pareja basado en kinesiología, enfocado en la recuperación de lesiones, el cambio de composición corporal a largo plazo y la mejora del rendimiento físico.",
-      cta: "Reservar sesión",
-      note: "Estudio en ActivSpace, West Seattle"
-    },
-    about: {
-      eyebrow: "Por qué GenHao Wellness",
-      heading: "Formado para entender cómo te mueves",
-      body: "GenHao Wellness es un estudio de entrenamiento personal basado en kinesiología, creado en torno a tres objetivos: ayudarte a recuperarte de una lesión de forma segura, aliviar el dolor crónico y transformar tu composición corporal de manera duradera. Cada programa comienza evaluando cómo te mueves, no solo cómo te ves."
-    },
-    space: {
-      eyebrow: "El estudio",
-      heading: "Un espacio diseñado para entrenar con enfoque",
-      body: "GenHao Wellness opera desde ActivSpace en West Seattle, un estudio de entrenamiento dedicado con el espacio y el equipo necesarios para trabajar la movilidad, el movimiento y la fuerza a tu propio ritmo, de forma individual o en pareja.",
-      photoNote: "Fotos del estudio próximamente"
-    },
-    trainer: {
-      eyebrow: "Conoce a tu entrenador",
-      name: "Hsi Yen Wang",
-      credentials: "Fundador y entrenador · Kinesiología · Certificación IASTM",
-      bio: "Hola, soy Hsi Yen Wang, el entrenador y fundador de GenHao Wellness. Mi formación es en kinesiología y cuento con la certificación internacional IASTM (Movilización de Tejidos Blandos Asistida por Instrumentos). Fundé GenHao Wellness porque quería crear un espacio de entrenamiento que realmente entienda cómo se mueve tu cuerpo, no solo cómo se ve. Ya sea que te estés recuperando de una lesión, trabajando con dolor crónico o cambiando tu composición corporal, cada programa comienza con una evaluación honesta de tu movimiento."
-    },
-    services: {
-      heading: "Servicios",
-      individual: { title: "Entrenamiento individual", desc: "Sesiones personalizadas según tu historial de movimiento, limitaciones actuales y objetivos.", note: "55 o 45 minutos" },
-      partner: { title: "Entrenamiento en pareja", desc: "Entrena junto a un amigo, pareja o familiar — el mismo coaching personalizado, compartido.", note: "Sesiones de 55 minutos" }
-    },
-    pricing: {
-      heading: "Precios",
-      sub: "Elige un paquete de sesiones o un plan mensual recurrente.",
-      packagesHeading: "Paquetes de sesiones",
-      packagesCols: { sessions: "Sesiones", ind55: "Individual · 55 min", ind45: "Individual · 45 min", partner: "Pareja · 55 min" },
-      monthlyHeading: "Planes mensuales",
-      monthlyCols: { freq: "Frecuencia", ind55: "55 min", ind45: "45 min", partner: "Pareja · 55 min" },
-      perSessionSuffix: " / sesión",
-      monthSuffix: " / mes",
-      freqLabels: { '1x': "1× / semana", '2x': "2× / semana", '3x': "3× / semana" },
-      note: "Las sesiones compradas no caducan. Se aplica un cargo por servicio del 2.5% a los pagos con tarjeta."
-    },
-    location: {
-      heading: "Visita el estudio",
-      addressLabel: "Dirección",
-      hoursLabel: "Horario",
-      phoneLabel: "Teléfono",
-      emailLabel: "Correo",
-      neighborhood: "ActivSpace · West Seattle",
-      closedLabel: "Cerrado",
-      messageLabel: "Escríbenos para consultar",
-      days: ["Dom", "Lun", "Mar", "Mié", "Jue", "Vie", "Sáb"]
-    },
-    cta: { heading: "¿Listo para empezar?", sub: "Reserva tu primera sesión en línea en un par de minutos.", button: "Reservar sesión" },
-    footer: { rights: "© 2026 GenHao Wellness LLC" }
   }
 };
 
@@ -246,7 +189,7 @@ function renderHeader(activeKey, T) {
       </nav>
       <div style="display:flex; align-items:center; gap:14px;">
         <div class="lang-switch">
-          ${langBtn('en', 'EN')}${langBtn('zh', '中')}${langBtn('es', 'ES')}
+          ${langBtn('en', 'EN')}${langBtn('zh', '中')}
         </div>
         <a class="btn btn-accent" href="${BOOK_URL}" target="_blank" rel="noopener" style="padding:10px 20px; font-size:14px;">${esc(T.nav.book)}</a>
       </div>
