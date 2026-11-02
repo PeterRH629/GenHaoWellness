@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Pricing &mdash; GenHao Wellness</title>
-<meta name="description" content="Session packages and monthly plans for personal training at GenHao Wellness, West Seattle.">
+<meta name="description" content="Session packages for personal training at GenHao Wellness, West Seattle.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700;800&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -18,21 +18,13 @@
 mountPage('price', function (T) {
   const packageRowsHtml = PACKAGE_DATA.map(row => `
     <tr>
-      <td>${row.n}</td>
+      <td>${row.n === 1 ? esc(T.pricing.singleLabel) : row.n}</td>
       <td><div class="price-total">${fmtMoney(row.ind55)}</div><div class="price-per">${fmtMoney(row.ind55Per)}${T.pricing.perSessionSuffix}</div></td>
       <td><div class="price-total">${fmtMoney(row.ind45)}</div><div class="price-per">${fmtMoney(row.ind45Per)}${T.pricing.perSessionSuffix}</div></td>
       <td><div class="price-total">${fmtMoney(row.partner)}</div><div class="price-per">${fmtMoney(row.partnerPer)}${T.pricing.perSessionSuffix}</div></td>
     </tr>
   `).join('');
 
-  const monthlyRowsHtml = MONTHLY_DATA.map(row => `
-    <tr>
-      <td>${T.pricing.freqLabels[row.freqKey]}</td>
-      <td class="price-total">${fmtMoney(row.ind55)}${T.pricing.monthSuffix}</td>
-      <td class="price-total">${fmtMoney(row.ind45)}${T.pricing.monthSuffix}</td>
-      <td class="price-total">${fmtMoney(row.partner)}${T.pricing.monthSuffix}</td>
-    </tr>
-  `).join('');
 
   return `
   <section class="section-pad" style="padding-top:88px; padding-bottom:96px;">
@@ -40,6 +32,12 @@ mountPage('price', function (T) {
       <div style="text-align:center; max-width:620px; margin:0 auto 48px;">
         <h1 style="font-size:32px; font-weight:700;">${esc(T.pricing.heading)}</h1>
         <p style="margin-top:14px; font-size:16px; color:var(--ink-soft);">${esc(T.pricing.sub)}</p>
+      </div>
+
+      <div class="card" style="max-width:620px; margin:0 auto 44px; text-align:center;">
+        <span class="eyebrow">${esc(T.pricing.introNote)}</span>
+        <h2 style="font-size:22px; font-weight:700;">${esc(T.pricing.introHeading)} · ${fmtMoney(ASSESSMENT_PRICE)}</h2>
+        <p style="margin-top:10px; font-size:15.5px; line-height:1.6; color:var(--ink-soft);">${esc(T.pricing.introBody)}</p>
       </div>
 
       <h2 style="font-size:18px; font-weight:700; margin-bottom:14px;">${esc(T.pricing.packagesHeading)}</h2>
@@ -52,19 +50,6 @@ mountPage('price', function (T) {
             <th>${esc(T.pricing.packagesCols.partner)}</th>
           </tr></thead>
           <tbody>${packageRowsHtml}</tbody>
-        </table>
-      </div>
-
-      <h2 style="font-size:18px; font-weight:700; margin-bottom:14px;">${esc(T.pricing.monthlyHeading)}</h2>
-      <div class="table-wrap">
-        <table>
-          <thead><tr style="background:var(--ink);">
-            <th>${esc(T.pricing.monthlyCols.freq)}</th>
-            <th>${esc(T.pricing.monthlyCols.ind55)}</th>
-            <th>${esc(T.pricing.monthlyCols.ind45)}</th>
-            <th>${esc(T.pricing.monthlyCols.partner)}</th>
-          </tr></thead>
-          <tbody>${monthlyRowsHtml}</tbody>
         </table>
       </div>
 

@@ -6,19 +6,16 @@ const ACCENT_HEX = "#C96A3B";
 const BOOK_URL = { toString: () => "https://peterrh629.github.io/booking/?o=peter&lang=" + currentLang };
 
 const PACKAGE_DATA = [
-  { n: 10,  ind55: 880,  ind55Per: 88,     ind45: 780,  ind45Per: 78,   partner: 1100, partnerPer: 110 },
-  { n: 20,  ind55: 1720, ind55Per: 86,     ind45: 1520, ind45Per: 76,   partner: 2150, partnerPer: 107.5 },
-  { n: 50,  ind55: 4150, ind55Per: 83,     ind45: 3650, ind45Per: 73,   partner: 5187, partnerPer: 103.74 },
-  { n: 75,  ind55: 6000, ind55Per: 80,     ind45: 5250, ind45Per: 70,   partner: 7500, partnerPer: 100 },
-  { n: 100, ind55: 7800, ind55Per: 78,     ind45: 6800, ind45Per: 68,   partner: 9750, partnerPer: 97.5 },
+  { n: 1,   ind55: 110,  ind55Per: 110, ind45: 99,   ind45Per: 99, partner: 140,   partnerPer: 140 },
+  { n: 5,   ind55: 525,  ind55Per: 105, ind45: 470,  ind45Per: 94, partner: 660,   partnerPer: 132 },
+  { n: 10,  ind55: 1000, ind55Per: 100, ind45: 890,  ind45Per: 89, partner: 1250,  partnerPer: 125 },
+  { n: 20,  ind55: 1900, ind55Per: 95,  ind45: 1680, ind45Per: 84, partner: 2380,  partnerPer: 119 },
+  { n: 50,  ind55: 4500, ind55Per: 90,  ind45: 3950, ind45Per: 79, partner: 5650,  partnerPer: 113 },
+  { n: 75,  ind55: 6375, ind55Per: 85,  ind45: 5550, ind45Per: 74, partner: 7950,  partnerPer: 106 },
+  { n: 100, ind55: 8000, ind55Per: 80,  ind45: 6900, ind45Per: 69, partner: 10000, partnerPer: 100 },
 ];
 
-const MONTHLY_DATA = [
-  { freqKey: '1x', ind55: 385,  ind45: 342, partner: 482 },
-  { freqKey: '2x', ind55: 716,  ind45: 649, partner: 895 },
-  { freqKey: '3x', ind55: 1023, ind45: 900, partner: 1276 },
-];
-
+const ASSESSMENT_PRICE = 79;
 const HOURS_RAW = [
   { key: 0, hours: null },
   { key: 1, hours: "13:00–20:00" },
@@ -91,15 +88,15 @@ const COPY = {
     },
     pricing: {
       heading: "Pricing",
-      sub: "Choose a bundled session package or a recurring monthly plan.",
+      sub: "Start with a one-on-one assessment, then choose the session package that fits your goals.",
+      introHeading: "New Client Assessment",
+      introBody: "Your first visit is a one-on-one movement assessment and training session, so we can build a plan around how you move.",
+      introNote: "New clients only · one time",
+      singleLabel: "Single",
       packagesHeading: "Session Packages",
       packagesCols: { sessions: "Sessions", ind55: "Individual · 55 min", ind45: "Individual · 45 min", partner: "Partner · 55 min" },
-      monthlyHeading: "Monthly Plans",
-      monthlyCols: { freq: "Frequency", ind55: "55 min", ind45: "45 min", partner: "Partner · 55 min" },
       perSessionSuffix: " / session",
-      monthSuffix: " / month",
-      freqLabels: { '1x': "1× / week", '2x': "2× / week", '3x': "3× / week" },
-      note: "Purchased sessions do not expire. A 2.5% service fee applies to card payments."
+      note: "Purchased sessions do not expire. Prices include sales tax. In-home sessions are the same price. A 2.5% service fee applies to credit card payments."
     },
     location: {
       heading: "Visit the Studio",
@@ -119,7 +116,7 @@ const COPY = {
     nav: { about: "關於", space: "工作室", trainer: "教練", services: "服務", price: "價格", contact: "聯絡", book: "立即預約" },
     hero: {
       eyebrow: "西雅圖西區·一對一教練",
-      headline: "練得聪明，\n恢復得更強壯。",
+      headline: "練得聰明，\n恢復得更強壯。",
       sub: "以運動科學為基礎的一對一與雙人教練課程，擅長傷後復原、長期體態改變，以及提升運動表現。",
       cta: "立即預約",
       note: "工作室位於西雅圖 West Seattle 的 ActivSpace"
@@ -148,15 +145,15 @@ const COPY = {
     },
     pricing: {
       heading: "價格",
-      sub: "可選擇多堂課程包，或每月固定方案。",
+      sub: "先從一對一評估開始，再選擇適合你目標的課程包。",
+      introHeading: "新學員評估課",
+      introBody: "第一次上課是一對一的動作評估加訓練，讓我們依照你的身體狀況規劃課程。",
+      introNote: "限新學員．限一次",
+      singleLabel: "單堂",
       packagesHeading: "課程包",
       packagesCols: { sessions: "堂數", ind55: "個人·55分鐘", ind45: "個人·45分鐘", partner: "雙人·55分鐘" },
-      monthlyHeading: "月方案",
-      monthlyCols: { freq: "頻率", ind55: "55分鐘", ind45: "45分鐘", partner: "雙人·55分鐘" },
       perSessionSuffix: " / 堂",
-      monthSuffix: " / 月",
-      freqLabels: { '1x': "每週 1 次", '2x': "每週 2 次", '3x': "每週 3 次" },
-      note: "已購買的堂數沒有使用期限。信用卡付款需加收 2.5% 服務費。"
+      note: "已購買的堂數沒有使用期限。價格已含銷售稅。到府課程同價。信用卡付款需加收 2.5% 服務費。"
     },
     location: {
       heading: "工作室資訊",
