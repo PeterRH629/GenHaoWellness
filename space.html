@@ -24,9 +24,10 @@ mountPage('space', function (T) {
       <p style="margin-top:20px; font-size:18px; line-height:1.7; color:var(--ink-soft);">${esc(T.space.body)}</p>
     </div>
     <div class="wrap">
-      <div class="space-photo-grid">
-        <div class="space-photo-placeholder">${esc(T.space.photoNote)}</div>
-        <div class="space-photo-placeholder">${esc(T.space.photoNote)}</div>
+      <div class="space-photo-grid" style="grid-template-columns:repeat(3, 1fr);">
+        <img src="studio-1.jpg" alt="Training rack and equipment at GenHao Wellness studio" loading="lazy" style="width:100%; aspect-ratio:3/4; object-fit:cover; border-radius:20px; display:block;">
+        <img src="studio-2.jpg" alt="Mobility and accessory equipment wall" loading="lazy" style="width:100%; aspect-ratio:3/4; object-fit:cover; border-radius:20px; display:block;">
+        <img src="studio-3.jpg" alt="Adjustable dumbbells, clubs and sandbags" loading="lazy" style="width:100%; aspect-ratio:3/4; object-fit:cover; border-radius:20px; display:block;">
       </div>
     </div>
   </section>
