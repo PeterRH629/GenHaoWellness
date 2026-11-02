@@ -78,8 +78,11 @@ const COPY = {
     trainer: {
       eyebrow: "Meet Your Trainer",
       name: "Hsi Yen Wang",
-      credentials: "Founder & Trainer · Kinesiology · IASTM Certified",
-      bio: "Hi, I'm Hsi Yen Wang — the trainer and founder behind GenHao Wellness. My background is in kinesiology, and I hold an international IASTM (Instrument-Assisted Soft Tissue Mobilization) certification. I started GenHao Wellness because I wanted a training space that actually understands how your body moves — not just how it looks. Whether you're returning from an injury, working through chronic pain, or changing your body composition, every program starts with an honest look at how you move."
+      credentials: "Founder & Trainer · Kinesiology · NASM-CPT · FISAF CPT",
+      greeting: "Hi, I'm Hsi Yen.",
+      bio: "I started training for the same reason many people do — I wanted to build muscle. But as I got bigger, I noticed something I didn't expect: my body didn't actually move or feel better. That question led me to keep learning about how the body really works.\n\nWhat I learned changed the way I coach. When you understand your body and learn to use it well, strength and a better physique follow naturally — they don't have to be forced.\n\nToday I focus on two things: helping clients move away from the discomfort and pain that build up from years of habits, and helping them bridge the gap after surgery or physical therapy so they can return to training and daily life with confidence.\n\nI coach in English and Mandarin. Every program starts with understanding how you move — because the more you understand your own body, the more your movement and posture come back.",
+      certsHeading: "Certifications & Training",
+      certs: ["NASM Certified Personal Trainer (CPT)", "FISAF Certified Personal Trainer", "Functional Kinesiology Certificate", "FTI Kettlebell Level 1 & 2", "TRX Suspension Training Course (STC)", "TRX Rip Training Course (RTC)", "IASTM Certified"]
     },
     services: {
       heading: "Services",
@@ -135,8 +138,11 @@ const COPY = {
     trainer: {
       eyebrow: "認識你的教練",
       name: "Hsi Yen Wang",
-      credentials: "創辦人／教練．運動機能學．IASTM 國際認證",
-      bio: "你好，我是 Hsi Yen Wang，GenHao Wellness 的創辦人與教練。我擁有運動機能學（Kinesiology）背景，並持有國際 IASTM（儀器輔助軟組織鬆動術）證照。我創立 GenHao Wellness，是希望打造一個真正理解「你怎麼動」而不只是「你看起來如何」的訓練空間。無論是傷後恢復、慢性疼痛調理，或是體態改變，每個訓練計畫都從誠實的動作評估開始。"
+      credentials: "創辦人／教練．運動機能學．NASM-CPT．FISAF CPT",
+      greeting: "你好，我是 Hsi Yen。",
+      bio: "跟很多人一樣，我一開始訓練，只是單純想增加肌肉。但隨著肌肉量增加，我發現身體的活動和運用，並沒有想像中變好。這個疑問讓我開始不斷學習，去理解我們的身體到底是怎麼運作的。\n\n後來我明白：當我們更理解、也更能好好運用自己的身體時，體態自然就會跟著出現，而不是硬練出來的。\n\n現在，我專注在兩件事：幫助客戶遠離長年習慣造成的不舒服或疼痛，以及在術後或物理治療結束後，銜接回到訓練和日常生活。\n\n我可以用中文和英文上課。每一個訓練計畫都從了解你怎麼動開始——因為當你越理解自己的身體，活動能力和體態都會跟著恢復。",
+      certsHeading: "證照與專業訓練",
+      certs: ["NASM 私人教練證照（CPT）", "FISAF 私人教練證照", "功能性運動機能學證書", "FTI 壺鈴 Level 1、2", "TRX 懸吊訓練（STC）", "TRX Rip 訓練（RTC）", "IASTM 筋膜刀證照"]
     },
     services: {
       heading: "服務項目",
