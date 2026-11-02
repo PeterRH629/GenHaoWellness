@@ -1,11 +1,11 @@
 :root {
-  --bg: #FBF7F2;
-  --bg-alt: #F3EAE0;
-  --ink: #26190F;
-  --ink-soft: #6b5c4c;
-  --accent: #C96A3B;
-  --accent-dark: #A6522A;
-  --line: #E6D9C8;
+  --bg: #F7F8F5;
+  --bg-alt: #EEF2EC;
+  --ink: #1D2621;
+  --ink-soft: #4D5A52;
+  --accent: #2F6B4F;
+  --accent-dark: #24543E;
+  --line: #DCE3DC;
   --white: #FFFFFF;
 }
 * { box-sizing: border-box; }
