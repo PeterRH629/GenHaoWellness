@@ -8,18 +8,18 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700;800&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=20261102b">
+<link rel="stylesheet" href="styles.css?v=20261103b">
 </head>
 <body>
 <div id="app"></div>
 
-<script src="common.js?v=20261102b"></script>
+<script src="common.js?v=20261103b"></script>
 <script>
 mountPage('contact', function (T) {
   const hoursRowsHtml = HOURS_RAW.map(h => `
     <div style="display:flex; justify-content:space-between; padding:9px 0; border-top:1px solid var(--line); font-size:15px;">
       <span style="color:var(--ink-soft);">${esc(T.location.days[h.key])}</span>
-      <span style="font-weight:600;">${h.hours === 'MSG' ? esc(T.location.messageLabel) : (h.hours ? esc(h.hours) : esc(T.location.closedLabel))}</span>
+      <span style="font-weight:600;">${h.hours === 'MSG' ? esc(T.location.messageLabel) : h.hours === 'HOME' ? esc(T.location.homeLabel) : (h.hours ? esc(h.hours) : esc(T.location.closedLabel))}</span>
     </div>
   `).join('');
 

@@ -24,6 +24,8 @@ img { max-width: 100%; }
 }
 .btn-accent { background: var(--accent); color: var(--white); }
 .btn-accent:hover { background: var(--accent-dark); color: var(--white); }
+.btn-ghost { background: transparent; color: var(--accent); border-color: var(--accent); }
+.btn-ghost:hover { background: var(--bg-alt); color: var(--accent-dark); }
 .btn-outline { background: transparent; color: var(--white); border-color: rgba(255,255,255,0.4); }
 .btn-outline:hover { border-color: #fff; color: #fff; }
 .eyebrow {
@@ -65,6 +67,10 @@ td:first-child { text-align: left; font-weight: 600; font-size: 15px; }
   color: var(--ink-soft); font-size: 13.5px; text-align: center; padding: 16px;
 }
 
+@media (max-width: 1000px) {
+  .cards-4 { grid-template-columns: 1fr 1fr !important; }
+}
+
 @media (max-width: 760px) {
   .wrap { padding: 0 22px; }
   .hero-grid { grid-template-columns: 1fr !important; }
@@ -75,6 +81,7 @@ td:first-child { text-align: left; font-weight: 600; font-size: 15px; }
   .trainer-grid { grid-template-columns: 1fr !important; }
   .trainer-photo { max-width: 280px !important; margin: 0 auto; }
   .space-photo-grid { grid-template-columns: 1fr !important; }
+  .cards-4, .cards-3 { grid-template-columns: 1fr !important; }
   .nav-links { display: none !important; }
   .menu-btn { display: inline-flex; }
   .brand-text { display: none; }

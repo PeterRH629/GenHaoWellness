@@ -16,14 +16,21 @@ const PACKAGE_DATA = [
 ];
 
 const ASSESSMENT_PRICE = 79;
+
+/* Client reviews for the homepage. The section stays hidden until at least one review is added.
+   Add real reviews only, with the client's permission. Example:
+   { name: "Mary B.", en: "Quote in English", zh: "中文翻譯（選填）" },            */
+const REVIEWS = [];
+/* Paste the Google review link here once the Business Profile is public, e.g. "https://g.page/r/xxxx" */
+const GOOGLE_REVIEWS_URL = "";
 const HOURS_RAW = [
-  { key: 0, hours: null },
-  { key: 1, hours: "13:00–20:00" },
-  { key: 2, hours: "13:00–20:00" },
-  { key: 3, hours: "13:00–20:00" },
-  { key: 4, hours: "13:00–20:00" },
-  { key: 5, hours: "13:00–20:00" },
-  { key: 6, hours: "MSG" }
+  { key: 0, hours: "HOME" },
+  { key: 1, hours: "13:00–21:00" },
+  { key: 2, hours: "13:00–21:00" },
+  { key: 3, hours: "13:00–21:00" },
+  { key: 4, hours: "13:00–21:00" },
+  { key: 5, hours: "13:00–21:00" },
+  { key: 6, hours: "HOME" }
 ];
 
 function fmtMoney(n) {
@@ -42,6 +49,7 @@ const NAV_PAGES = [
   { key: 'space',     file: 'space.html' },
   { key: 'trainer',  file: 'trainer.html' },
   { key: 'services', file: 'services.html' },
+  { key: 'online',   file: 'online.html' },
   { key: 'price',    file: 'price.html' },
   { key: 'contact',  file: 'contact.html' }
 ];
@@ -56,19 +64,26 @@ let currentLang = (function () {
 
 const COPY = {
   en: {
-    nav: { about: "About", space: "Space", trainer: "Trainer", services: "Services", price: "Price", contact: "Contact", book: "Book Now" },
+    nav: { about: "About", space: "Space", trainer: "Trainer", services: "Services", online: "Online", price: "Price", contact: "Contact", book: "Book Now" },
     hero: {
-      eyebrow: "West Seattle · Personal Training",
-      headline: "Train smarter.\nRecover stronger.",
-      sub: "One-on-one and partner coaching built on a kinesiology background — focused on post-injury recovery, long-term body composition change, and improved athletic performance.",
-      cta: "Book a Session",
-      note: "Studio at ActivSpace, West Seattle"
+      eyebrow: "West Seattle · Personal Training · In-Home",
+      headline: "A trainer who understands how your body moves.",
+      sub: "Kinesiology-based coaching that finds the cause of your pain — so you move better, hurt less, and get stronger for good.",
+      cta: "Book a $79 Assessment",
+      cta2: "Ask a Question",
+      note: "Studio at ActivSpace · In-home sessions on weekends · English / 中文"
     },
     about: {
       eyebrow: "Why GenHao Wellness",
       heading: "Trained to understand how you move",
       body: "GenHao Wellness is a kinesiology-based personal training studio built around three goals: helping clients return safely from injury, easing chronic pain, and changing their body composition for good. Every program starts with an assessment of how you move — not just how you look."
     },
+    help: {"eyebrow": "How I can help", "heading": "Training built around how you move", "cards": [["Pain, Injury & Post-Rehab", "Ease chronic back, knee, or shoulder pain, return safely after injury, and bridge the gap from surgery or physical therapy back to full training."], ["Body Composition", "Lose fat and build muscle with a plan that fits how your body moves — sustainable results, not quick fixes."], ["Strength for Life", "Stay strong, mobile, and confident in everyday life as you age."], ["Performance", "Move better and feel stronger in the sports and activities you love."]]},
+    diff: {"eyebrow": "Why GenHao Wellness", "heading": "Not just another workout", "points": [["Starts with an assessment", "Every program begins by looking at how you move — not just how you look."], ["Finds the cause", "Pain often comes from long-standing habits. We work on the root, not just the symptom."], ["Kinesiology background", "NASM and FISAF certified, with specialized training in functional kinesiology."]]},
+    steps: {"eyebrow": "How it works", "heading": "Getting started is simple", "items": [["Assessment", "A one-on-one movement assessment to understand your history, limits, and goals."], ["Your plan", "A program built around how you move and what you want to achieve."], ["Train", "One-on-one or partner sessions in the studio, or at home on weekends."], ["Progress", "We track how you move and feel, and adjust as you get stronger."]]},
+    coach: {"eyebrow": "Meet your trainer", "heading": "Hi, I'm Hsi Yen.", "body": "I started out chasing muscle, and found that understanding the body matters more. Today I help clients move away from long-standing pain and bridge the gap after surgery or physical therapy.", "link": "Read my story"},
+    reviews: {"eyebrow": "What clients say", "heading": "From our clients", "more": "Read more reviews on Google"},
+    where: {"eyebrow": "Where we train", "heading": "In the studio or at home", "studioTitle": "Studio · ActivSpace, West Seattle", "studioBody": "A private, fully equipped studio. Weekdays 1–9 PM.", "homeTitle": "In-Home Sessions", "homeBody": "Weekend sessions at your home, same price as the studio. Equipment provided."},
     space: {
       eyebrow: "The Studio",
       heading: "Train in a space built for focus",
@@ -87,8 +102,11 @@ const COPY = {
     services: {
       heading: "Services",
       individual: { title: "Individual Training", desc: "One-on-one sessions built around your movement history, current limitations, and goals.", note: "55 or 45 minutes" },
-      partner: { title: "Partner Training", desc: "Train alongside a friend, partner, or family member — the same personalized coaching, shared.", note: "55-minute sessions" }
+      partner: { title: "Partner Training", desc: "Train alongside a friend, partner, or family member — the same personalized coaching, shared.", note: "55-minute sessions" },
+      inhome: {"title": "In-Home Training", "desc": "Personal training at your home on weekends — ideal if you're recovering from injury or prefer to train where you live. Equipment provided.", "note": "Weekends · same price as the studio"},
+      online: {"title": "Online Coaching", "desc": "Weekly check-ins, a new program every week, and a monthly 30-minute call — for clients anywhere in the U.S., in English or Mandarin.", "note": "$549 per quarter", "link": "Learn more"}
     },
+    online: {"eyebrow": "Online Coaching · Anywhere in the U.S.", "heading": "Kinesiology-based coaching, wherever you are.", "sub": "Personalized weekly programming and monthly check-ins, in English or Mandarin.", "includedHeading": "What's included", "included": [["Weekly check-in", "Send a quick update each week — how training went, any pain, energy, and progress."], ["A new program every week", "Your plan is adjusted every week based on how you move and feel."], ["Monthly 30-minute call", "A video or phone call each month to review progress and set the next goals."], ["English or 中文", "Coaching in the language you're most comfortable with."]], "forHeading": "Who it's for", "forBody": "People living in the U.S. who want expert, movement-based guidance but can't train at our studio — whether you're working through long-standing pain, returning after injury or physical therapy, building strength, or changing your body composition.", "priceHeading": "Pricing", "price": "$549", "pricePer": "per quarter (3 months)", "terms": ["Billed every 3 months; 3-month minimum.", "A 2.5% service fee applies to credit card payments.", "No refunds for partial quarters.", "Available to clients living in the U.S."], "cta": "Apply for Online Coaching", "ctaNote": "Send a message and I'll get back to you to get started.", "disclaimer": "Online coaching is exercise guidance and is not a substitute for medical care. Please check with your doctor before starting a new program, especially after surgery or injury."},
     pricing: {
       heading: "Pricing",
       sub: "Start with a one-on-one assessment, then choose the session package that fits your goals.",
@@ -110,25 +128,33 @@ const COPY = {
       neighborhood: "ActivSpace · West Seattle",
       closedLabel: "Closed",
       messageLabel: "Message to inquire",
+      homeLabel: "In-home sessions by appointment",
       days: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
     },
     cta: { heading: "Ready to start?", sub: "Book your first session online in a couple of minutes.", button: "Book a Session" },
     footer: { rights: "© 2026 GenHao Wellness LLC" }
   },
   zh: {
-    nav: { about: "關於", space: "工作室", trainer: "教練", services: "服務", price: "價格", contact: "聯絡", book: "立即預約" },
+    nav: { about: "關於", space: "工作室", trainer: "教練", services: "服務", online: "線上課程", price: "價格", contact: "聯絡", book: "立即預約" },
     hero: {
-      eyebrow: "西雅圖西區·一對一教練",
-      headline: "練得聰明，\n恢復得更強壯。",
-      sub: "以運動科學為基礎的一對一與雙人教練課程，擅長傷後復原、長期體態改變，以及提升運動表現。",
-      cta: "立即預約",
-      note: "工作室位於西雅圖 West Seattle 的 ActivSpace"
+      eyebrow: "西雅圖西區 · 一對一教練 · 到府課程",
+      headline: "懂你身體怎麼動的教練。",
+      sub: "以運動機能學為基礎，找出疼痛的原因——讓你動得更好、痛得更少，真正變強壯。",
+      cta: "預約 $79 評估課",
+      cta2: "先問問題",
+      note: "工作室在 ActivSpace · 週末可到府 · 中文 / English"
     },
     about: {
       eyebrow: "為什麼選擇 GenHao Wellness",
       heading: "從你的身體如何動開始",
       body: "GenHao Wellness 是一家以運動科學為基礎的個人教練工作室，圍繞三個目標打造：協助學員安全地從傷後復原、改善長期疼痛困擾，並長期改變他們的體態組成。每一套訓練計畫都從評估你的動作模式開始，而不只是外表。"
     },
+    help: {"eyebrow": "我能幫你什麼", "heading": "依照你的動作模式設計訓練", "cards": [["疼痛、傷後與術後銜接", "改善長期的背、膝、肩疼痛，安全地從受傷中回到訓練，並在術後或物理治療結束後，銜接回完整的訓練。"], ["身體組成", "依照你的動作模式規劃，減脂、增肌，追求長久的成果，而不是速成。"], ["終身的肌力", "隨著年紀增長，在日常生活中依然強壯、靈活、有自信。"], ["運動表現", "在你喜歡的運動和活動中，動得更好、更有力。"]]},
+    diff: {"eyebrow": "為什麼選擇 GenHao Wellness", "heading": "不只是一般的健身課", "points": [["從評估開始", "每個計畫都從了解你怎麼動開始，而不只是看外表。"], ["找出原因", "疼痛常常來自長年的習慣，我們從根本處理，而不只是症狀。"], ["運動機能學背景", "NASM、FISAF 認證，並受過功能性運動機能學的專業訓練。"]]},
+    steps: {"eyebrow": "上課流程", "heading": "開始很簡單", "items": [["評估", "一對一的動作評估，了解你的病史、限制和目標。"], ["你的計畫", "依照你的動作模式和目標，量身設計訓練計畫。"], ["訓練", "在工作室一對一或雙人上課，週末也可以到府。"], ["追蹤進步", "記錄你的動作和感受，隨著你變強壯持續調整。"]]},
+    coach: {"eyebrow": "認識你的教練", "heading": "你好，我是 Hsi Yen。", "body": "從單純想增肌，到發現理解身體才是關鍵。現在我專注幫助客戶遠離長期疼痛，並在術後或物理治療後銜接回到訓練。", "link": "看我的故事"},
+    reviews: {"eyebrow": "客戶怎麼說", "heading": "來自客戶的回饋", "more": "在 Google 上看更多評價"},
+    where: {"eyebrow": "上課地點", "heading": "工作室或到府", "studioTitle": "工作室 · ActivSpace，西雅圖西區", "studioBody": "私人、器材完整的訓練空間。平日下午 1 點到晚上 9 點。", "homeTitle": "到府課程", "homeBody": "週末到你家上課，價格與工作室相同，器材由教練準備。"},
     space: {
       eyebrow: "工作室環境",
       heading: "為專注訓練打造的空間",
@@ -147,8 +173,11 @@ const COPY = {
     services: {
       heading: "服務項目",
       individual: { title: "個人課程", desc: "依照你的動作病史、目前限制與目標，量身打造的一對一課程。", note: "55或45分鐘" },
-      partner: { title: "雙人課程", desc: "與朋友、伴侶或家人一起訓練——同樣專屬的指導，共享一堂課。", note: "55分鐘課程" }
+      partner: { title: "雙人課程", desc: "與朋友、伴侶或家人一起訓練——同樣專屬的指導，共享一堂課。", note: "55分鐘課程" },
+      inhome: {"title": "到府課程", "desc": "週末到你家上課，適合傷後恢復中、或想在家訓練的人。器材由教練準備。", "note": "週末 · 價格與工作室相同"},
+      online: {"title": "線上課程", "desc": "每週回報、每週新課表，加上每月 30 分鐘線上面談。適合住在美國各地的客戶，中文或英文上課。", "note": "每季 US$549", "link": "了解更多"}
     },
+    online: {"eyebrow": "線上課程 · 美國各地", "heading": "以運動機能學為基礎的指導，不管你在哪裡。", "sub": "量身設計的每週課表加上每月面談，中文或英文都可以。", "includedHeading": "課程內容", "included": [["每週回報", "每週簡單回報訓練狀況、有沒有疼痛、精神和進度。"], ["每週新課表", "依照你的動作和感受，每週調整你的訓練計畫。"], ["每月 30 分鐘面談", "每月一次視訊或電話，檢視進度、訂下一階段的目標。"], ["中文或英文", "用你最習慣的語言上課。"]], "forHeading": "適合誰", "forBody": "住在美國、想要專業動作指導，但沒辦法來工作室上課的人——不論是長期疼痛、傷後或物理治療後的銜接、想變強壯，或想改變身體組成。", "priceHeading": "價格", "price": "US$549", "pricePer": "每季（3 個月）", "terms": ["每 3 個月收費一次，最少一季。", "信用卡付款需加收 2.5% 服務費。", "中途退出不退費。", "僅限住在美國的客戶。"], "cta": "申請線上課程", "ctaNote": "傳訊息給我，我會回覆你開始的方式。", "disclaimer": "線上課程是運動指導，不能取代醫療。開始新的訓練計畫前，特別是術後或受傷後，請先諮詢醫師。"},
     pricing: {
       heading: "價格",
       sub: "先從一對一評估開始，再選擇適合你目標的課程包。",
@@ -170,6 +199,7 @@ const COPY = {
       neighborhood: "ActivSpace·西雅圖西區",
       closedLabel: "休息",
       messageLabel: "請訊息詢問",
+      homeLabel: "到府課程（需預約）",
       days: ["週日", "週一", "週二", "週三", "週四", "週五", "週六"]
     },
     cta: { heading: "準備好開始了嗎？", sub: "線上幾分鐘即可預約你的第一堂課。", button: "立即預約" },

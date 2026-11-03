@@ -8,25 +8,38 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700;800&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=20261102b">
+<link rel="stylesheet" href="styles.css?v=20261103b">
 </head>
 <body>
 <div id="app"></div>
 
-<script src="common.js?v=20261102b"></script>
+<script src="common.js?v=20261103b"></script>
 <script>
 mountPage('about', function (T) {
+  const cards = T.help.cards.map((c, i) => `
+        <div class="card" style="padding:28px;">
+          <div style="width:40px; height:40px; border-radius:12px; background:var(--bg-alt); color:var(--accent); font-weight:700; display:flex; align-items:center; justify-content:center; margin-bottom:16px;">${i + 1}</div>
+          <h3 style="font-size:18px; font-weight:700; margin-bottom:8px;">${esc(c[0])}</h3>
+          <p style="font-size:15px; line-height:1.6; color:var(--ink-soft);">${esc(c[1])}</p>
+        </div>`).join('');
+  const steps = T.steps.items.map((st, i) => `
+        <div style="position:relative; padding-top:8px;">
+          <div style="font-family:'Bricolage Grotesque',sans-serif; font-size:40px; font-weight:700; color:var(--accent); opacity:0.35; line-height:1;">0${i + 1}</div>
+          <h3 style="font-size:18px; font-weight:700; margin:10px 0 8px;">${esc(st[0])}</h3>
+          <p style="font-size:15px; line-height:1.6; color:var(--ink-soft);">${esc(st[1])}</p>
+        </div>`).join('');
   return `
-  <section id="top" style="padding-top:88px; padding-bottom:80px;">
-    <div class="wrap hero-grid" style="display:grid; grid-template-columns:1.15fr 0.85fr; gap:56px; align-items:center;">
+  <section id="top" style="padding-top:80px; padding-bottom:80px;">
+    <div class="wrap hero-grid" style="display:grid; grid-template-columns:1.1fr 0.9fr; gap:56px; align-items:center;">
       <div>
         <span class="eyebrow">${esc(T.hero.eyebrow)}</span>
-        <h1 class="hero-headline" style="font-size:58px; line-height:1.06; font-weight:700; letter-spacing:-0.02em; white-space:pre-line;">${esc(T.hero.headline)}</h1>
-        <p style="margin-top:24px; font-size:18px; line-height:1.6; color:var(--ink-soft); max-width:480px;">${esc(T.hero.sub)}</p>
-        <div style="margin-top:36px; display:flex; align-items:center; gap:20px; flex-wrap:wrap;">
+        <h1 class="hero-headline" style="font-size:54px; line-height:1.06; font-weight:700; letter-spacing:-0.02em;">${esc(T.hero.headline)}</h1>
+        <p style="margin-top:22px; font-size:18px; line-height:1.6; color:var(--ink-soft); max-width:500px;">${esc(T.hero.sub)}</p>
+        <div style="margin-top:32px; display:flex; align-items:center; gap:14px; flex-wrap:wrap;">
           <a class="btn btn-accent" href="${BOOK_URL}" target="_blank" rel="noopener">${esc(T.hero.cta)}</a>
-          <span style="font-size:14px; color:var(--ink-soft);">${esc(T.hero.note)}</span>
+          <a class="btn btn-ghost" href="contact.html">${esc(T.hero.cta2)}</a>
         </div>
+        <p style="margin-top:18px; font-size:14px; color:var(--ink-soft);">${esc(T.hero.note)}</p>
       </div>
       <div class="hero-photo">
         <img src="studio-1.jpg" alt="GenHao Wellness training studio at ActivSpace, West Seattle" style="width:100%; aspect-ratio:4/5; max-height:560px; object-fit:cover; object-position:center 60%; border-radius:22px; display:block; box-shadow:0 24px 50px -24px rgba(29,38,33,0.45);">
@@ -34,13 +47,59 @@ mountPage('about', function (T) {
     </div>
   </section>
 
-  <section id="about" class="section-pad" style="padding-top:72px; padding-bottom:72px; background:var(--bg-alt); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
-    <div class="wrap" style="max-width:720px; text-align:center; margin:0 auto;">
-      <span class="eyebrow">${esc(T.about.eyebrow)}</span>
-      <h2 style="font-size:34px; font-weight:700; letter-spacing:-0.01em; line-height:1.2;">${esc(T.about.heading)}</h2>
-      <p class="about-body" style="margin-top:20px; font-size:18px; line-height:1.7; color:var(--ink-soft);">${esc(T.about.body)}</p>
+  <section class="section-pad" style="padding-top:72px; padding-bottom:80px; background:var(--bg-alt); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+    <div class="wrap">
+      <div style="text-align:center; max-width:640px; margin:0 auto 40px;">
+        <span class="eyebrow">${esc(T.help.eyebrow)}</span>
+        <h2 style="font-size:32px; font-weight:700; letter-spacing:-0.01em;">${esc(T.help.heading)}</h2>
+      </div>
+      <div class="cards-4" style="display:grid; grid-template-columns:repeat(4, 1fr); gap:18px;">${cards}
+      </div>
     </div>
   </section>
+
+  <section class="section-pad" style="padding-top:80px; padding-bottom:80px;">
+    <div class="wrap">
+      <div style="text-align:center; max-width:640px; margin:0 auto 44px;">
+        <span class="eyebrow">${esc(T.steps.eyebrow)}</span>
+        <h2 style="font-size:32px; font-weight:700; letter-spacing:-0.01em;">${esc(T.steps.heading)}</h2>
+      </div>
+      <div class="cards-4" style="display:grid; grid-template-columns:repeat(4, 1fr); gap:28px;">${steps}
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad" style="padding-top:80px; padding-bottom:80px; background:var(--bg-alt); border-top:1px solid var(--line);">
+    <div class="wrap trainer-grid" style="display:grid; grid-template-columns:0.8fr 1.2fr; gap:56px; align-items:center;">
+      <img class="trainer-photo" src="trainer-hsiyen.jpg" alt="Hsi Yen Wang" style="width:100%; border-radius:20px; display:block; object-fit:cover; box-shadow:0 20px 40px -20px rgba(29,38,33,0.35);">
+      <div>
+        <span class="eyebrow">${esc(T.coach.eyebrow)}</span>
+        <h2 style="font-size:30px; font-weight:700; letter-spacing:-0.01em;">${esc(T.coach.heading)}</h2>
+        <p style="margin-top:16px; font-size:17px; line-height:1.7; color:var(--ink-soft);">${esc(T.coach.body)}</p>
+        <a href="trainer.html" style="display:inline-block; margin-top:20px; font-weight:600;">${esc(T.coach.link)} →</a>
+      </div>
+    </div>
+  </section>
+
+  ${REVIEWS.length ? `
+  <section class="section-pad" style="padding-top:80px; padding-bottom:80px;">
+    <div class="wrap">
+      <div style="text-align:center; max-width:640px; margin:0 auto 40px;">
+        <span class="eyebrow">${esc(T.reviews.eyebrow)}</span>
+        <h2 style="font-size:32px; font-weight:700; letter-spacing:-0.01em;">${esc(T.reviews.heading)}</h2>
+      </div>
+      <div class="cards-3" style="display:grid; grid-template-columns:repeat(${Math.min(REVIEWS.length, 3)}, 1fr); gap:20px;">
+        ${REVIEWS.map(r => `
+        <figure class="card" style="margin:0; padding:28px;">
+          <div style="color:var(--accent); font-size:18px; letter-spacing:2px; margin-bottom:12px;">★★★★★</div>
+          <blockquote style="margin:0; font-size:16px; line-height:1.7; color:var(--ink);">“${esc((currentLang === 'zh' && r.zh) ? r.zh : r.en)}”</blockquote>
+          <figcaption style="margin-top:16px; font-size:14px; font-weight:600; color:var(--ink-soft);">— ${esc(r.name)}</figcaption>
+        </figure>`).join('')}
+      </div>
+      ${GOOGLE_REVIEWS_URL ? `<p style="text-align:center; margin-top:28px;"><a href="${GOOGLE_REVIEWS_URL}" target="_blank" rel="noopener" style="font-weight:600;">${esc(T.reviews.more)} →</a></p>` : ''}
+    </div>
+  </section>` : ''}
+
   `;
 });
 </script>

@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Online Coaching &mdash; GenHao Wellness</title>
+<meta name="description" content="Online personal training for clients anywhere in the U.S. — weekly programming, check-ins, and monthly calls, in English or Mandarin. $549 per quarter.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700;800&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=20261103b">
+</head>
+<body>
+<div id="app"></div>
+
+<script src="common.js?v=20261103b"></script>
+<script>
+mountPage('online', function (T) {
+  const O = T.online;
+  const inc = O.included.map(x => `
+          <div style="display:flex; gap:14px; align-items:flex-start;">
+            <span style="flex:none; width:28px; height:28px; border-radius:9px; background:var(--bg-alt); color:var(--accent); font-weight:700; display:flex; align-items:center; justify-content:center;">✓</span>
+            <div><h3 style="font-size:17px; font-weight:700; margin-bottom:4px;">${esc(x[0])}</h3>
+            <p style="font-size:15px; line-height:1.6; color:var(--ink-soft);">${esc(x[1])}</p></div>
+          </div>`).join('');
+  const terms = O.terms.map(t => `<li style="margin-top:6px;">${esc(t)}</li>`).join('');
+  const mail = 'mailto:genhaowellness@gmail.com?subject=' + encodeURIComponent('Online Coaching Inquiry');
+  return `
+  <section class="section-pad" style="padding-top:88px; padding-bottom:64px;">
+    <div class="wrap" style="max-width:760px; text-align:center;">
+      <span class="eyebrow">${esc(O.eyebrow)}</span>
+      <h1 style="font-size:40px; line-height:1.12; font-weight:700; letter-spacing:-0.01em;">${esc(O.heading)}</h1>
+      <p style="margin-top:18px; font-size:18px; line-height:1.6; color:var(--ink-soft);">${esc(O.sub)}</p>
+      <div style="margin-top:28px;"><a class="btn btn-accent" href="${mail}">${esc(O.cta)}</a></div>
+    </div>
+  </section>
+
+  <section class="section-pad" style="padding-top:64px; padding-bottom:72px; background:var(--bg-alt); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+    <div class="wrap" style="max-width:900px;">
+      <h2 style="font-size:28px; font-weight:700; margin-bottom:28px;">${esc(O.includedHeading)}</h2>
+      <div class="services-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:28px;">${inc}
+      </div>
+    </div>
+  </section>
+
+  <section class="section-pad" style="padding-top:72px; padding-bottom:72px;">
+    <div class="wrap services-grid" style="max-width:900px; display:grid; grid-template-columns:1.1fr 0.9fr; gap:40px; align-items:start;">
+      <div>
+        <h2 style="font-size:28px; font-weight:700; margin-bottom:16px;">${esc(O.forHeading)}</h2>
+        <p style="font-size:16.5px; line-height:1.7; color:var(--ink-soft);">${esc(O.forBody)}</p>
+      </div>
+      <div class="card" style="text-align:center;">
+        <span class="eyebrow">${esc(O.priceHeading)}</span>
+        <div style="font-family:'Bricolage Grotesque',sans-serif; font-size:44px; font-weight:700;">${esc(O.price)}</div>
+        <div style="font-size:15px; color:var(--ink-soft);">${esc(O.pricePer)}</div>
+        <ul style="text-align:left; margin:20px 0 0; padding-left:18px; font-size:14px; line-height:1.5; color:var(--ink-soft);">${terms}</ul>
+        <a class="btn btn-accent" href="${mail}" style="margin-top:22px; width:100%;">${esc(O.cta)}</a>
+        <p style="margin-top:10px; font-size:13px; color:var(--ink-soft);">${esc(O.ctaNote)}</p>
+      </div>
+    </div>
+    <div class="wrap" style="max-width:900px;">
+      <p style="margin-top:36px; font-size:13px; line-height:1.6; color:var(--ink-soft);">${esc(O.disclaimer)}</p>
+    </div>
+  </section>
+  `;
+});
+</script>
+<script data-goatcounter="https://genhaowellness.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
