@@ -185,7 +185,7 @@ function renderHeader(activeKey, T) {
     <div class="wrap" style="display:flex; align-items:center; justify-content:space-between; gap:24px; padding-top:16px; padding-bottom:16px;">
       <a href="index.html" style="display:flex; align-items:center; gap:12px; color:var(--ink);">
         <img src="${LOGO_SRC}" alt="GenHao Wellness" style="height:34px; width:auto; display:block;">
-        <span style="font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:18px; letter-spacing:-0.01em;">GenHao Wellness</span>
+        <span class="brand-text" style="font-family:'Bricolage Grotesque',sans-serif; font-weight:700; font-size:18px; letter-spacing:-0.01em;">GenHao Wellness</span>
       </a>
       <nav class="nav-links">
         ${navLinks}
@@ -195,8 +195,14 @@ function renderHeader(activeKey, T) {
           ${langBtn('en', 'EN')}${langBtn('zh', '中')}
         </div>
         <a class="btn btn-accent" href="${BOOK_URL}" target="_blank" rel="noopener" style="padding:10px 20px; font-size:14px;">${esc(T.nav.book)}</a>
+        <button class="menu-btn" aria-label="Menu" aria-expanded="false">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
+        </button>
       </div>
     </div>
+    <nav class="mobile-nav">
+      ${NAV_PAGES.map(p => `<a href="${p.file}" class="${p.key === activeKey ? 'nav-active' : ''}">${esc(T.nav[p.key])}</a>`).join('')}
+    </nav>
   </header>`;
 }
 
@@ -230,6 +236,15 @@ function mountPage(pageKey, bodyFn) {
   const T = COPY[currentLang];
   document.documentElement.lang = currentLang === 'zh' ? 'zh-Hant' : currentLang;
   document.getElementById('app').innerHTML = renderHeader(pageKey, T) + bodyFn(T) + renderFooterCTA(T);
+
+  const menuBtn = document.querySelector('.menu-btn');
+  const mobileNav = document.querySelector('.mobile-nav');
+  if (menuBtn && mobileNav) {
+    menuBtn.addEventListener('click', () => {
+      const open = mobileNav.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  }
 
   document.querySelectorAll('.lang-btn').forEach(btn => {
     btn.addEventListener('click', () => {

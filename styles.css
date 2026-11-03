@@ -50,6 +50,12 @@ td:first-child { text-align: left; font-weight: 600; font-size: 15px; }
 .nav-links { display: flex; align-items: center; gap: 32px; }
 .nav-links a { color: var(--ink-soft); font-weight: 500; font-size: 14.5px; }
 .nav-links a.nav-active { color: var(--ink); font-weight: 700; }
+.menu-btn { display: none; align-items: center; justify-content: center; width: 42px; height: 42px; border-radius: 12px; border: 1px solid var(--line); background: var(--white); color: var(--ink); cursor: pointer; padding: 0; }
+.mobile-nav { display: none; border-top: 1px solid var(--line); padding: 8px 22px 14px; }
+.mobile-nav.open { display: block; }
+.mobile-nav a { display: block; padding: 13px 4px; font-size: 16px; font-weight: 500; color: var(--ink-soft); border-bottom: 1px solid var(--line); }
+.mobile-nav a:last-child { border-bottom: none; }
+.mobile-nav a.nav-active { color: var(--ink); font-weight: 700; }
 
 /* Space page photo placeholder (until real studio photos are added) */
 .space-photo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 40px; }
@@ -70,6 +76,8 @@ td:first-child { text-align: left; font-weight: 600; font-size: 15px; }
   .trainer-photo { max-width: 280px !important; margin: 0 auto; }
   .space-photo-grid { grid-template-columns: 1fr !important; }
   .nav-links { display: none !important; }
+  .menu-btn { display: inline-flex; }
+  .brand-text { display: none; }
   .hero-headline { font-size: 40px !important; }
   .section-pad { padding-top: 56px !important; padding-bottom: 56px !important; }
   .table-wrap { overflow-x: auto; }
