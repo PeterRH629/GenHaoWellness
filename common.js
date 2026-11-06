@@ -7,7 +7,6 @@ const BOOK_URL = { toString: () => "https://peterrh629.github.io/booking/?o=pete
 
 const PACKAGE_DATA = [
   { n: 1,   ind55: 110,  ind55Per: 110, ind45: 99,   ind45Per: 99, partner: 140,   partnerPer: 140 },
-  { n: 5,   ind55: 525,  ind55Per: 105, ind45: 470,  ind45Per: 94, partner: 660,   partnerPer: 132 },
   { n: 10,  ind55: 1000, ind55Per: 100, ind45: 890,  ind45Per: 89, partner: 1250,  partnerPer: 125 },
   { n: 20,  ind55: 1900, ind55Per: 95,  ind45: 1680, ind45Per: 84, partner: 2380,  partnerPer: 119 },
   { n: 50,  ind55: 4500, ind55Per: 90,  ind45: 3950, ind45Per: 79, partner: 5650,  partnerPer: 113 },
